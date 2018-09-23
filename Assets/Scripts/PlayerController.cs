@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        // This is a comment
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
