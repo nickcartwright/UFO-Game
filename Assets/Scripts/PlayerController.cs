@@ -1,15 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
     private Rigidbody2D rb2d;
     public float speed;
+    private int count;
+    public Text countText;
+    public Text winText;
 
     private void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        count = 0;
+        setCountText();
+        winText.text = "";
     }
 
     private void FixedUpdate()
@@ -26,7 +33,18 @@ public class PlayerController : MonoBehaviour {
         if (other.gameObject.CompareTag( "PickUp" ) ) 
         {
             other.gameObject.SetActive(false);
+            count = count + 1;
+            setCountText();
+            if ( count >= 12 ) {
+                winText.text = "You win !";
+            }
         }
+    }
+
+    private void setCountText()
+    {
+        countText.text = "Count: " + count.ToString();
+
     }
 
 }
